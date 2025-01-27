@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mess Menu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            display: flex;
+            justify-content: center;
+            background-color: #6200ea;
+            padding: 10px;
+            width: 100%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header button {
+            background-color: #bb86fc;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 15px;
+            margin: 0 5px;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        header button:hover {
+            background-color: #3700b3;
+        }
+
+        header button.active {
+            background-color: #3700b3;
+        }
+
+        .menu-container {
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 800px;
+        }
+
+        .menu-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #6200ea;
+        }
+
+        .menu-container ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .menu-container ul li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .menu-container ul li:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <header id="day-buttons">
+        <!-- Buttons for days will be dynamically inserted here -->
+    </header>
+
+    <div class="menu-container">
+        <h2 id="day-title">Today's Menu</h2>
+        <ul id="menu-list">
+            <!-- Menu items will be dynamically inserted here -->
+        </ul>
+    </div>
+
+    <script>
+        const menuData = {
+            "Monday": {
+                "Breakfast": "Pav Bhaji, Daliya, Milk, Tea, Banana / Egg 1pc, Bread Butter",
+                "Lunch": "Spicy Chhola, Poori, Curd, Jeera Rice",
+                "Snacks": "Dry Maggie, Tea",
+                "Dinner": "Arahar Dal Fry, Lauki Kofta, Roti, Rice"
+            },
+            "Tuesday": {
+                "Breakfast": "Medu Vada, Coconut Chutney, Sambhar, Milk, Tea, Banana, Bread, Butter/Jam",
+                "Lunch": "Rajma Masala, Onion Raita, Roti, Jeera Rice",
+                "Snacks": "Bread Pakoda, Sauce, Chutney, Tea",
+                "Dinner": "Hakka Noodles, Manchurian Fried Rice, Sauce, Schezwan Chutney"
+            },
+            "Wednesday": {
+                "Breakfast": "Aloo Paratha, Curd, Milk, Tea, Banana/Egg, Bread, Butter/Jam",
+                "Lunch": "Sambhar, Roti, Rice, Aloo Kundru",
+                "Snacks": "Pyaz Bhajiya, Chutney, Tea",
+                "Dinner": "Paneer Butter Masala, Zeera Rice, Mix Dal Fry, Jalebi/Moong Dal Halwa"
+            },
+            "Thursday": {
+                "Breakfast": "Poha, Green Chutney, Banana/Egg, Milk, Tea, Bread, Butter/Jam",
+                "Lunch": "Aloo Pyaz Bhujia, Kadhi, Pyaz Pakoda, Rice, Roti",
+                "Snacks": "Chola Samosa/Samosa (2 pcs), Tea",
+                "Dinner": "Soya Matar Sabji, Rice, Roti, Arahar Dal"
+            },
+            "Friday": {
+                "Breakfast": "Aloo Poori, Banana/Egg 1 pc, Bread, Butter Jam",
+                "Lunch": "Bhindi Fry, Arahar Dal Fry, Roti, Rice",
+                "Snacks": "Cutlet, Ketchup, Tea",
+                "Dinner": "Kashmiri Dum Aloo, Vegetable Tahri, Roti, Raita (Thick)"
+            },
+            "Saturday": {
+                "Breakfast": "Paratha, White Matar Sabji, Milk, Tea, Banana/Egg, Bread, Butter/Jam",
+                "Lunch": "Pindi Choley, Bathure, Rice, Boondi Raita",
+                "Snacks": "Rusk (5 pcs), Tea",
+                "Dinner": "Veg Jalfrezi, Arahar Dal Fry, Roti, Jeera Rice"
+            },
+            "Sunday": {
+                "Breakfast": "Uttapam, Sambhar, Coconut Chutney, Milk, Tea, Banana/Egg, Bread, Butter/Jam",
+                "Lunch": "Vegetable Biryani, Dal Makhni, Tawa Paratha, Raita",
+                "Snacks": "Chana Masala, Tea",
+                "Dinner": "Ice Cream, Jeera Rice, Roti, Kadai Paneer, Punjabi Dal Tadka"
+            }
+        };
+
+        const days = Object.keys(menuData);
+        const today = new Date().toLocaleDateString('en-US', { weekday: 'long' });
+
+        function renderMenu(day) {
+            document.getElementById('day-title').textContent = `${day}'s Menu`;
+            const menuList = document.getElementById('menu-list');
+            menuList.innerHTML = '';
+
+            const menu = menuData[day];
+            for (const [meal, items] of Object.entries(menu)) {
+                const li = document.createElement('li');
+                li.textContent = `${meal}: ${items}`;
+                menuList.appendChild(li);
+            }
+
+            document.querySelectorAll('header button').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(day).classList.add('active');
+        }
+
+        function renderDayButtons() {
+            const dayButtons = document.getElementById('day-buttons');
+            days.forEach(day => {
+                const button = document.createElement('button');
+                button.id = day;
+                button.textContent = day;
+                button.onclick = () => renderMenu(day);
+                dayButtons.appendChild(button);
+            });
+        }
+
+        renderDayButtons();
+        renderMenu(today);
+    </script>
+</body>
+</html>
