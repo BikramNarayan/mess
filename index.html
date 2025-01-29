@@ -18,7 +18,7 @@
         header {
             display: flex;
             justify-content: center;
-            flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+            flex-wrap: wrap;
             background-color: #6200ea;
             padding: 10px;
             width: 100%;
@@ -30,12 +30,12 @@
             border: none;
             border-radius: 20px;
             padding: 10px 15px;
-            margin: 5px; /* Reduced margin for better mobile spacing */
+            margin: 5px;
             color: #fff;
             font-weight: bold;
             cursor: pointer;
             transition: background-color 0.3s;
-            font-size: 14px; /* Adjusted for mobile readability */
+            font-size: 14px;
         }
 
         header button:hover {
@@ -60,7 +60,8 @@
             text-align: center;
             margin-bottom: 20px;
             color: #6200ea;
-            font-size: 20px; /* Adjusted for better readability on smaller screens */
+            font-size: 24px;
+            font-weight: bold;
         }
 
         .menu-container ul {
@@ -69,33 +70,80 @@
         }
 
         .menu-container ul li {
-            padding: 10px;
+            padding: 15px;
             border-bottom: 1px solid #ddd;
-            font-size: 16px; /* Responsive font size */
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .menu-container ul li:last-child {
             border-bottom: none;
         }
 
+        .menu-container ul li .meal-icon {
+            width: 24px;
+            height: 24px;
+            background-size: cover;
+        }
+
+        .menu-container ul li .meal-name {
+            font-weight: bold;
+            color: #6200ea;
+            min-width: 80px;
+        }
+
+        .menu-container ul li .meal-items {
+            flex: 1;
+            color: #333;
+        }
+
+        /* Icons for meals */
+        .breakfast-icon {
+            background-image: url('https://cdn-icons-png.flaticon.com/512/3081/3081559.png');
+        }
+
+        .lunch-icon {
+            background-image: url('https://cdn-icons-png.flaticon.com/512/3075/3075977.png');
+        }
+
+        .snacks-icon {
+            background-image: url('https://cdn-icons-png.flaticon.com/512/3081/3081527.png');
+        }
+
+        .dinner-icon {
+            background-image: url('https://cdn-icons-png.flaticon.com/512/3081/3081544.png');
+        }
+
         /* Media Query for smaller screens (mobile) */
         @media (max-width: 768px) {
             header button {
-                font-size: 12px; /* Smaller buttons for mobile */
-                padding: 8px 10px; /* Adjust padding */
+                font-size: 12px;
+                padding: 8px 10px;
             }
 
             .menu-container {
-                width: 95%; /* Use almost full width on smaller screens */
-                padding: 15px; /* Adjust padding for smaller screens */
+                width: 95%;
+                padding: 15px;
             }
 
             .menu-container h2 {
-                font-size: 18px; /* Slightly smaller heading */
+                font-size: 20px;
             }
 
             .menu-container ul li {
-                font-size: 14px; /* Smaller text for list items */
+                font-size: 14px;
+                padding: 10px;
+            }
+
+            .menu-container ul li .meal-icon {
+                width: 20px;
+                height: 20px;
+            }
+
+            .menu-container ul li .meal-name {
+                min-width: 70px;
             }
         }
     </style>
@@ -114,48 +162,48 @@
 
     <script>
         const menuData = {
-           "Monday": {
-        "Breakfast": "Pav Bhaji, Daliya, Milk, Tea, Banana / Egg 1pc, Bread Butter",
-        "Lunch": "Spicy Chhola, Poori, Curd, Jeera Rice",
-        "Snacks": "Maggi",
-        "Dinner": "Arahar Dal Fry, Aloo Methi, Roti, Rice"
-    },
-    "Tuesday": {
-        "Breakfast": "Medu Vada, Coconut Chutney, Sambhar, Milk, Tea, Banana, Bread, Butter/Jam",
-        "Lunch": "Rajma Masala, Onion Raita, Roti, Jeera Rice",
-        "Snacks": "Bread Pakoda, Sauce, Chutney, Tea",
-        "Dinner": "Aalu Patta Gobi, Roti, Black Masoor Dal, Rice"
-    },
-    "Wednesday": {
-        "Breakfast": "Aloo Paratha, Curd, Milk, Tea, Banana/Egg, Bread, Butter/Jam",
-        "Lunch": "Sambhar, Roti, Rice, Aloo Gobi",
-        "Snacks": "Pyaz Bhajiya, Chutney, Tea",
-        "Dinner": "Palak Paneer, Zeera Rice, Mix Dal Fry, Jalebi/Moong Dal Halwa"
-    },
-    "Thursday": {
-        "Breakfast": "Aloo Puri, Banana/Egg, Milk, Tea, Bread, Butter/Jam",
-        "Lunch": "Aloo Pyaz Bhujia, Kadhi, Pyaz Pakoda, Rice, Roti",
-        "Snacks": "Chola Samosa, Tea",
-        "Dinner": "Aloo Matar Gajar, Rice, Roti, Arahar Dal"
-    },
-    "Friday": {
-        "Breakfast": "Gobi Paratha, Banana/Egg 1 pc, Bread, Butter Jam",
-        "Lunch": "Aloo Palak, Arahar Dal Fry, Roti, Rice",
-        "Snacks": "Cutlet, Ketchup, Tea",
-        "Dinner": "Kashmiri Dum Aloo, Vegetable Tahri, Raita Thick"
-    },
-    "Saturday": {
-        "Breakfast": "Paratha, White Matar Sabji, Milk, Tea, Banana/Egg, Bread, Butter/Jam",
-        "Lunch": "Pindi Choley, Bathure, Rice, Boondi Raita",
-        "Snacks": "Rusk (5 pcs), Tea",
-        "Dinner": "Veg Jalfrezi, Arahar Dal Fry, Roti, Jeera Rice"
-    },
-    "Sunday": {
-        "Breakfast": "Uttapam, Sambhar, Coconut Chutney, Milk, Tea, Banana/Egg, Bread, Butter/Jam",
-        "Lunch": "Vegetable Biryani, Dal Makhni, Tawa Paratha, Raita",
-        "Snacks": "Chana Masala, Tea",
-        "Dinner": "Sewai, Jeera Rice, Roti, Kadai Paneer, Punjabi Dal Tadka"
-    }
+            "Monday": {
+                "Breakfast": "Pav Bhaji, Daliya, Milk, Tea, Banana / Egg 1pc, Bread Butter",
+                "Lunch": "Spicy Chhola, Poori, Curd, Jeera Rice",
+                "Snacks": "Maggi",
+                "Dinner": "Arahar Dal Fry, Aloo Methi, Roti, Rice"
+            },
+            "Tuesday": {
+                "Breakfast": "Medu Vada, Coconut Chutney, Sambhar, Milk, Tea, Banana, Bread, Butter/Jam",
+                "Lunch": "Rajma Masala, Onion Raita, Roti, Jeera Rice",
+                "Snacks": "Bread Pakoda, Sauce, Chutney, Tea",
+                "Dinner": "Aalu Patta Gobi, Roti, Black Masoor Dal, Rice"
+            },
+            "Wednesday": {
+                "Breakfast": "Aloo Paratha, Curd, Milk, Tea, Banana/Egg, Bread, Butter/Jam",
+                "Lunch": "Sambhar, Roti, Rice, Aloo Gobi",
+                "Snacks": "Pyaz Bhajiya, Chutney, Tea",
+                "Dinner": "Palak Paneer, Zeera Rice, Mix Dal Fry, Jalebi/Moong Dal Halwa"
+            },
+            "Thursday": {
+                "Breakfast": "Aloo Puri, Banana/Egg, Milk, Tea, Bread, Butter/Jam",
+                "Lunch": "Aloo Pyaz Bhujia, Kadhi, Pyaz Pakoda, Rice, Roti",
+                "Snacks": "Chola Samosa, Tea",
+                "Dinner": "Aloo Matar Gajar, Rice, Roti, Arahar Dal"
+            },
+            "Friday": {
+                "Breakfast": "Gobi Paratha, Banana/Egg 1 pc, Bread, Butter Jam",
+                "Lunch": "Aloo Palak, Arahar Dal Fry, Roti, Rice",
+                "Snacks": "Cutlet, Ketchup, Tea",
+                "Dinner": "Kashmiri Dum Aloo, Vegetable Tahri, Raita Thick"
+            },
+            "Saturday": {
+                "Breakfast": "Paratha, White Matar Sabji, Milk, Tea, Banana/Egg, Bread, Butter/Jam",
+                "Lunch": "Pindi Choley, Bathure, Rice, Boondi Raita",
+                "Snacks": "Rusk (5 pcs), Tea",
+                "Dinner": "Veg Jalfrezi, Arahar Dal Fry, Roti, Jeera Rice"
+            },
+            "Sunday": {
+                "Breakfast": "Uttapam, Sambhar, Coconut Chutney, Milk, Tea, Banana/Egg, Bread, Butter/Jam",
+                "Lunch": "Vegetable Biryani, Dal Makhni, Tawa Paratha, Raita",
+                "Snacks": "Chana Masala, Tea",
+                "Dinner": "Sewai, Jeera Rice, Roti, Kadai Paneer, Punjabi Dal Tadka"
+            }
         };
 
         const days = Object.keys(menuData);
@@ -169,7 +217,11 @@
             const menu = menuData[day];
             for (const [meal, items] of Object.entries(menu)) {
                 const li = document.createElement('li');
-                li.textContent = `${meal}: ${items}`;
+                li.innerHTML = `
+                    <div class="meal-icon ${meal.toLowerCase()}-icon"></div>
+                    <div class="meal-name">${meal}</div>
+                    <div class="meal-items">${items}</div>
+                `;
                 menuList.appendChild(li);
             }
 
@@ -188,8 +240,46 @@
             });
         }
 
+        function requestNotificationPermission() {
+            if (Notification.permission !== 'granted') {
+                Notification.requestPermission().then(permission => {
+                    if (permission === 'granted') {
+                        scheduleNotifications();
+                    }
+                });
+            } else {
+                scheduleNotifications();
+            }
+        }
+
+        function scheduleNotifications() {
+            const now = new Date();
+            const day = now.toLocaleDateString('en-US', { weekday: 'long' });
+            const menu = menuData[day];
+
+            const mealTimes = {
+                "Breakfast": new Date(now.getFullYear(), now.getMonth(), now.getDate(), 8, 0, 0),
+                "Lunch": new Date(now.getFullYear(), now.getMonth(), now.getDate(), 12, 0, 0),
+                "Snacks": new Date(now.getFullYear(), now.getMonth(), now.getDate(), 16, 30, 0),
+                "Dinner": new Date(now.getFullYear(), now.getMonth(), now.getDate(), 19, 0, 0)
+            };
+
+            for (const [meal, time] of Object.entries(mealTimes)) {
+                const notificationTime = new Date(time.getTime() - 30 * 60000); // 30 minutes before
+                if (notificationTime > now) {
+                    setTimeout(() => {
+                        new Notification(`${meal} Time!`, {
+                            body: `Menu: ${menu[meal]}`,
+                            icon: 'https://example.com/icon.png' // Replace with your icon URL
+                        });
+                    }, notificationTime - now);
+                }
+            }
+        }
+
         renderDayButtons();
         renderMenu(today);
+        requestNotificationPermission();
     </script>
 </body>
 </html>
