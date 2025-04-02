@@ -162,22 +162,21 @@
 
     <script>
         const menuData = {
-            
     "Monday": {
         "Breakfast": "Pav Bhaji, Daliya, Milk, Tea, Banana/Egg 1pc, Bread Butter/Jam",
         "Lunch": "Spicy Chhola, Poori, Curd, Jeera Rice",
-        "Snacks": "Maggi",
+        "Snacks": "Maggi, Tea",
         "Dinner": "Arahar Dal Fry, Baigan Bharta, Roti, Rice"
     },
     "Tuesday": {
         "Breakfast": "Medu Vada, Coconut Chutney, Sambhar, Milk, Tea, Banana/Egg, Bread, Butter/Jam",
         "Lunch": "Rajma Masala, Boondi Raita, Roti, Jeera Rice",
         "Snacks": "Bread Pakoda, Sauce, Chutney, Tea",
-        "Dinner": "Lauki Kofta, Vegetable Tahri, Roti, Raita Thick"
+        "Dinner": "Gravy Manchurian, Hakka Noodles, Fried Rice, Schezwan Chutney, Sauce"
     },
     "Wednesday": {
         "Breakfast": "Aloo Paratha, Curd, Milk, Tea, Banana/Egg, Bread, Butter/Jam",
-        "Lunch": "Sambhar, Roti, Rice, Aloo Gobi",
+        "Lunch": "Sambhar, Roti, Rice, Aloo Baigan",
         "Snacks": "Pyaz Bhajiya, Chutney, Tea",
         "Dinner": "Shahi Paneer, Zeera Rice, Mix Dal Fry, Jalebi/Moong Dal Halwa"
     },
@@ -185,11 +184,11 @@
         "Breakfast": "Aloo Puri, Banana/Egg, Milk, Tea, Bread, Butter/Jam",
         "Lunch": "Aloo Pyaz Bhujia, Kadhi, Pyaz Pakoda, Rice, Roti",
         "Snacks": "Chola Samosa, Tea",
-        "Dinner": "Aloo Matar Gajar, Rice, Roti, Dal Palak"
+        "Dinner": "Lauki Kofta, Vegetable Tahri, Roti, Raita (Thick)"
     },
     "Friday": {
-        "Breakfast": "Gobi Paratha, Banana/Egg 1pc, Bread, Butter Jam, Milk, Tea",
-        "Lunch": "Aloo Palak, Arahar Dal Fry, Roti, Rice",
+        "Breakfast": "Poha, Banana/Egg 1pc, Bread, Butter Jam, Milk, Tea",
+        "Lunch": "Bhindi Fry, Arahar Dal Fry, Roti, Rice",
         "Snacks": "Aloo Tikki Matar Chaat with Dahi and Chutney",
         "Dinner": "Bhandara Style Sabji, Poori, Black Masoor Dal, Rice"
     },
@@ -203,9 +202,11 @@
         "Breakfast": "Spicy Matar Chhole, Kulcha, Milk, Tea, Banana/Egg, Bread, Butter/Jam",
         "Lunch": "Vegetable Biryani, Dal Makhni, Tawa Paratha, Raita",
         "Snacks": "Bhel, Tea",
-        "Dinner": "Sewai, Jeera Rice, Roti, Malai Kofta, Punjabi Dal Tadka"
-    }
-        };
+        "Dinner": "Ice Cream, Jeera Rice, Roti, Malai Kofta, Punjabi Dal Tadka"
+    },
+    "Notes": "Salad is available every day for lunch and dinner. Achaar/Lemon can be taken upon request."
+}
+;
 
         const days = Object.keys(menuData);
         const today = new Date().toLocaleDateString('en-US', { weekday: 'long' });
